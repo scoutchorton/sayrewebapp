@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Sayre Area School District</title>
+		<title>SASD Web App</title>
+		<link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
+		<!-- iOS Web App Code -->
 		<link rel="apple-touch-icon" href="./images/custom_icon.png" />
-		<link rel="shortcut-icon" href="./images/favicon.ico" type="image/x-icon" />
-		<meta name="apple-mobile-web-app-title" content="SASD App" />
+		<meta name="apple-mobile-web-app-title" content="SASD" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="transparent" />
 		<meta name="viewport" content="user-scalable=no, width=device-width" />
 		<meta id="isWebApp" name="apple-mobile-web-app-capable" content="yes" />
+		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 		<style>
-			#homeScreenPopup {
-				position: fixed;
+			#toolBar {
 				display: block;
-				width: 98%;
-				height: 98%;
-				top: 1%;
-				left: 1%;
-				z-index: 100;
-				background-color: blue;
-				color: white;
-				text-align: center;
-				vertical-align: middle;
+				height: 7.5%;
+				width: 100%;
+				background: grey;
+				position: fixed;
+				top: 92.5%;
+				z-index: 10;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 			}
 			#splash {
 				position: fixed;
@@ -30,45 +31,30 @@
 				z-index: 110;
 				background: #FFFFFF;
 			}
-			.applet {
-				border: grey solid 2px;
-				background: light-grey;
-				width: 95%;
-				margin: 2.5% auto;
-				min-height: 100px;
-				display: block;
-			}
-			.applet > h3 {
-				margin: 5px;
-			}
-			.applet > hr {
-				margin: 5px;
-			}
-			.applet > div {
-				margin: 7.5px;
+			iframe {
+				border: none;
+				height: inherit;
+				width: auto;
+				font-family: "Trebuchet MS", Helvetica, sans-serif !important;
 			}
 			body {
-				margin: 0;
-				font-family: 'Source Sans Pro' 'Open-sans' sans-serif;
+				margin: 0px;
+				height: 100%;
 			}
 		</style>
 	</head>
 	<body>
-		<div id="homeScreenPopup"><h1>Click the Share button, and click 'Add to Home Screen'.<br />Wait a second before adding, so the icon will load.</h1></div>
 		<div id="splash"><img  src="./images/startup.svg"/ style="width: 100%; height: 100%;"></div>
-		<div class="applet"><h3>This is a test.</h3><br /><a href="https://skyward.sayresd.org/scripts/wsisa.dll/WService=wsEAplus/FWEMNU01.w">Skyward Family Access</a></div>
-		<div class="applet"><h3>Header</h3><hr /><div>This is a test applet.<br />This is a test applet.<br />This is a test applet.<br />This is a test applet.<br />This is a test applet.<br />This is a test applet.<br />This is a test applet.<br /></div></div>
-		<div class="applet"><h3>Test page</h3><hr /><div>Click <a href="./test.html">here</a> for a test page.</div></div>
+		<iframe id="pageInfo" src="./home.html"></iframe>
+		<p id="appHistory" style="dispaly: none;">./home.html</p>
+		<script src="./scripts.js"></script>
+		<div id="toolBar">
+			<img src="./images/back.svg" onclick="frameBack()" style="margin: 1; height: 80%;" />
+		</div>
 		<script>
-			//document.getElementById('homeScreenPopup').style.display = "none";
-			if(window.navigator.platform === "iPhone" && window.navigator.standalone) {
-				document.getElementById('homeScreenPopup').style.display = "none";
-			}
-			setTimeout(function(){var aFrame = setInterval(frame, 10); var o = 1; function frame(){if(o <= 0){clearInterval(aFrame);document.getElementById('splash').style.display="none";}else{o = o - 0.01; console.log(o); document.getElementById('splash').style.opacity = o;}}}, 3000);
+			document.getElementById('pageInfo').style.height = window.screen.height + "px";
+			document.getElementById('pageInfo').style.width = window.screen.width + "px";
+			setTimeout(function(){var aFrame = setInterval(frame, 10); var o = 1; function frame(){if(o <= 0){clearInterval(aFrame);document.getElementById('splash').style.display="none";}else{o = o - 0.01; document.getElementById('splash').style.opacity = o;}}}, 3000);
 		</script>
-		<!--<script>
-			//From post here: https://gist.github.com/kylebarrow/1042026
-			(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(chref=d.href).replace(e.href,"").indexOf("#")&&(!/^[a-z\+\.\-]+:/i.test(chref)||chref.indexOf(e.protocol+"//"+e.host)===0)&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone");
-		</script>-->
 	</body>
 </html>

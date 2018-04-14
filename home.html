@@ -2,20 +2,26 @@
 <html>
 	<head>
 		<title>Sayre Area School District</title>
-		<link rel="apple-touch-icon" href="./images/custom_icon.png" />
 		<link rel="shortcut-icon" href="./images/favicon.ico" type="image/x-icon" />
+		<link rel="apple-touch-icon" href="./images/custom_icon.png" />
 		<meta name="apple-mobile-web-app-title" content="SASD App" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="transparent" />
 		<meta name="viewport" content="user-scalable=no, width=device-width" />
 		<meta id="isWebApp" name="apple-mobile-web-app-capable" content="yes" />
+		<script src="./scripts.js"></script>
 		<style>
-			#splash {
+			#homeScreenPopup {
 				position: fixed;
 				display: block;
-				width: 100%;
-				height: 100%;
-				z-index: 110;
-				background: #FFFFFF;
+				width: 98%;
+				height: 98%;
+				top: 1%;
+				left: 1%;
+				z-index: 100;
+				background-color: blue;
+				color: white;
+				text-align: center;
+				vertical-align: middle;
 			}
 			.applet {
 				border: grey solid 2px;
@@ -31,6 +37,9 @@
 			.applet > hr {
 				margin: 5px;
 			}
+			.applet > div {
+				margin: 7.5px;
+			}
 			body {
 				margin: 0;
 				font-family: 'Source Sans Pro' 'Open-sans' sans-serif;
@@ -38,8 +47,10 @@
 		</style>
 	</head>
 	<body>
-		<div id="homeScreenPopup"><h1>Click the Share button, and click 'Add to Home Screen'.</h1></div>
-		<div class="applet"><h3>Some header</h3><hr /><div style="margin: 7.5px;">This is an applet.<br />This is an applet.<br />This is a test applet.<br />This is a test applet.<br />This is a test applet.<br />This is a test applet.<br />This is a test applet.<br /></div></div>
+		<div id="homeScreenPopup"><h1>Click the Share button, and click 'Add to Home Screen'.<br />Wait a second before adding, so the icon will load.</h1></div>
+		<div class="applet"><h3>This is a test.</h3><br /><a href="https://skyward.sayresd.org/scripts/wsisa.dll/WService=wsEAplus/FWEMNU01.w">Skyward Family Access</a></div>
+		<div class="applet"><h3>Header</h3><hr /><div>This is a test applet.<br />This is a test applet.<br />This is a test applet.<br />This is a test applet.<br />This is a test applet.<br />This is a test applet.<br />This is a test applet.<br /></div></div>
+		<div class="applet"><h3>Test page</h3><hr /><div>Click <a onclick="frameLink('./test.html')" href="">here</a> for a test page.</div></div>
 		<script>
 			document.getElementById('homeScreenPopup').style.display = "none";
 			if(window.navigator.platform === "iPhone" && window.navigator.standalone) {
